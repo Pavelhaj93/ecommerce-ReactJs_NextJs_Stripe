@@ -8,21 +8,32 @@ import {
 import { Product } from "../../components";
 
 import { client, urlFor } from "../../lib/client";
+import { useStateContext } from "../../context/StateContext";
 
-const ProducDetails = ({ product, products }) => {
+const ProductDetails = ({ product, products }) => {
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
+  const { decreaseQty, increaseQty, qty, onAdd } = useStateContext();
 
   return (
     <div>
       <div className="product-detail-container">
         <div>
           <div className="image-container">
-            <img src={urlFor(image && image[index])} className="product-detail-image" />
+            <img
+              src={urlFor(image && image[index])}
+              className="product-detail-image"
+            />
           </div>
           <div className="small-images-container">
             {image?.map((item, i) => (
-              <img src={urlFor(item)} className={i === index ? 'small-image selected-image' : 'small-image'} onMouseEnter={() => setIndex(i)} />
+              <img key={i}
+                src={urlFor(item)}
+                className={
+                  i === index ? "small-image selected-image" : "small-image"
+                }
+                onMouseEnter={() => setIndex(i)}
+              />
             ))}
           </div>
         </div>
@@ -44,22 +55,22 @@ const ProducDetails = ({ product, products }) => {
           <div className="quantity">
             <h3>Quantity: </h3>
             <p className="quantity-desc">
-              <span className="minus" onClick="">
+              <span className="minus" onClick={decreaseQty}>
                 <AiOutlineMinus />
               </span>
-              <span className="num" onClick="">
-                0
+              <span className="num">
+                {qty}
               </span>
-              <span className="plus" onClick="">
+              <span className="plus" onClick={increaseQty}>
                 <AiOutlinePlus />
               </span>
             </p>
           </div>
           <div className="buttons">
-            <button type="button" className="add-to-cart" onClick="">
+            <button type="button" className="add-to-cart" onClick={() => onAdd(product, qty)}>
               Add to Cart
             </button>
-            <button type="button" className="buy-now" onClick="">
+            <button type="button" className="buy-now" >
               Buy Now
             </button>
           </div>
@@ -114,4 +125,4 @@ export const getStaticProps = async ({ params: { slug } }) => {
   };
 };
 
-export default ProducDetails;
+export default ProductDetails;
