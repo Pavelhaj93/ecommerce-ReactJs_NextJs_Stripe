@@ -3,9 +3,15 @@ import { toast } from "react-hot-toast";
 
 const Context = createContext();
 
+const cartFromLocalStorage = (window.localStorage.getItem("cart") || '[]')
+
+const result = JSON.parse(cartFromLocalStorage)
+
+console.log(result)
+
 export const StateContext = ({ children }) => {
   const [showCart, setShowCart] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(cartFromLocalStorage);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantities, setTotalQuantities] = useState(0);
   const [qty, setQty] = useState(1);
@@ -13,7 +19,12 @@ export const StateContext = ({ children }) => {
   let foundProduct;
   let index;
 
+  useEffect(() => {
+    window.localStorage.setItem("cart", JSON.stringify(cartItems))
+  }, [cartItems])
+
   const onAdd = (product, quantity) => {
+
     //   checking if the item is already in the cart
     const checkProductInCart = cartItems.find(
       (item) => item._id === product._id
