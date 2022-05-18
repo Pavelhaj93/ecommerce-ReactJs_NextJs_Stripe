@@ -17,6 +17,15 @@ export default {
             type: 'string',
         },
         {
+            name: 'slug',
+            title: 'Slug',
+            type: 'slug',
+            options: {
+                source: 'name',
+                maxLength: 90,
+            }
+        },
+        {
             name: 'buttonText',
             title: 'ButtonText',
             type: 'string',

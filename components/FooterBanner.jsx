@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 import { urlFor } from "../lib/client";
+import HeroBanner from "./HeroBanner";
 
 const FooterBanner = ({
   footerBanner: {
@@ -15,11 +16,10 @@ const FooterBanner = ({
     buttonText,
     image,
     desc,
-    name
+    name,
+    slug
   },
 }) => {
-
-  const resultForUrl = name.replaceAll(' ', '-').toLowerCase();
 
   return (
     <div className="footer-banner-container">
@@ -34,7 +34,7 @@ const FooterBanner = ({
           <p>{smallText}</p>
           <h3>{midText}</h3>
           <p>{desc}</p>
-          <Link href={`/product/${resultForUrl}`}>
+          <Link href={`/product/${slug.current}`}>
             <button type="button">{buttonText}</button>
           </Link>
         </div>

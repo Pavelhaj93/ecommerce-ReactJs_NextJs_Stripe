@@ -5,9 +5,6 @@ import { urlFor } from '../lib/client';
 
 const HeroBanner = ({ heroBanner }) => {
 
-  // we are passing heroBanner.name tot he URl but we need to replace spaces to dashes and put it into lowercase
-  const resultToUrl = heroBanner.name.replaceAll(' ', '-').toLowerCase();
-
   return (
     <div className="hero-banner-container">
       <div>
@@ -17,7 +14,7 @@ const HeroBanner = ({ heroBanner }) => {
         <img src={urlFor(heroBanner.image)} alt="headphones" className="hero-banner-image" />
 
         <div>
-          <Link href={`/product/${resultToUrl}`}>
+          <Link href={`/product/${heroBanner.slug.current}`}>
             <button type="button">{heroBanner.buttonText}</button>
           </Link>
 

@@ -36,9 +36,8 @@ a {
 	display: flex;
   height: 3em;
 	justify-content: space-between;
-	margin: 6px 18px;
 	position: relative;
-  width: 83%;
+  width: 80%;
   margin: 0 auto;
   align-items: center;
 }
@@ -147,6 +146,7 @@ span.text-red {
 	height: 500px;
 	line-height: 0.9;
 	width: 100%;
+  margin: 0 auto;
 	.beats-solo {
 		font-size: 20px;
 	}

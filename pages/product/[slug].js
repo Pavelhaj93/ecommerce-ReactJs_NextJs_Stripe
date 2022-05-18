@@ -21,6 +21,23 @@ const ProductDetails = ({ product, products }) => {
     setShowCart(true)
   }
 
+
+  // Logic of skipping a current produc detail "product" from the carousel you may like
+  const newArray = products.map((item, index) => {
+    if (product.slug.current === products[index].slug.current)
+    return 
+    else {
+      return item
+    }
+  })
+
+  // Logic above changed the current object to undefined, I had to filter it and deleted it otherwise the carousel did not show anything
+  const resultArray = newArray.filter(element => {
+    return element !== undefined;
+  })
+
+  console.log(resultArray)
+
   return (
     <div>
       <div className="product-detail-container">
@@ -86,7 +103,7 @@ const ProductDetails = ({ product, products }) => {
         <h2>You may also like</h2>
         <div className="marquee">
           <div className="maylike-products-container track">
-            {products.map((item) => (
+            {resultArray.map((item) => (
               <Product key={item._id} product={item} />
             ))}
           </div>
