@@ -12,6 +12,9 @@ import toast from "react-hot-toast";
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
 import getStripe from "../lib/getStripe";
+import { useEffect } from "react/cjs/react.production.min";
+
+// const cartFromLoc
 
 const Cart = () => {
   const cartRef = useRef();

@@ -5,18 +5,21 @@ import { Product, FooterBanner, HeroBanner } from "../components";
 
 const Home = ({ products, bannerData }) => {
   
-  console.log(bannerData)
+
+  console.log(bannerData);
   return (
     <>
-      <HeroBanner heroBanner={bannerData.length && bannerData[0]}/>
+      <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
       <div className="products-heading">
         <h2>Best Selling Products</h2>
         <p>Speakers of many variations</p>
       </div>
       <div className="products-container">
-        {products?.map((product) => <Product key={product._id} product={product} />)}
+        {products?.map((product) => (
+          <Product key={product._id} product={product} />
+        ))}
       </div>
-      <FooterBanner footerBanner={bannerData && bannerData[1]}/>
+      <FooterBanner footerBanner={bannerData && bannerData[1]} />
     </>
   );
 };
@@ -30,7 +33,6 @@ export const getServerSideProps = async () => {
 
   return {
     props: { products, bannerData },
-    
   };
 };
 

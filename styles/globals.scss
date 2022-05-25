@@ -1,13 +1,12 @@
 
 html {
 	padding: 0;
-	margin: 0;
+	width: 100vw;
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 	box-sizing: border-box;
 }
 body {
 	padding: 0;
-	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 	box-sizing: border-box;
 }
@@ -655,7 +654,7 @@ span.text-red {
 	}
 	.footer-banner-image {
 		width: 77%;
-		left: 30%;
+		left: 20%;
 		top: 6%;
 		height: 56%;
 	}
